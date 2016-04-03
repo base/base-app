@@ -5,7 +5,7 @@ module.exports = function(app, base, env, options) {
   this.register('abc', 'verb-readme-generator');
 
   this.task('foo', function(cb) {
-    cb();
+    app.generate('readme', cb);
   });
 
   this.task('bar', function(cb) {
