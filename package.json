@@ -10,14 +10,16 @@
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "bin",
+    "index.js",
+    "utils.js"
   ],
   "main": "index.js",
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "bin": {
     "app": "bin/cli.js"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   },
   "scripts": {
     "test": "mocha"
@@ -28,13 +30,10 @@
     "base-pipeline": "^0.2.5",
     "base-pkg": "^0.2.0",
     "base-runtimes": "^0.1.5",
-    "define-property": "^0.2.5",
-    "extend-shallow": "^2.0.1",
     "lazy-cache": "^1.0.3",
     "liftoff": "^2.2.1",
-    "minimist": "^1.2.0",
-    "resolve": "^1.1.7",
-    "resolve-glob": "^0.1.8"
+    "log-utils": "^0.1.0",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
     "base": "^0.8.1",
@@ -51,7 +50,10 @@
     "mocha": "^2.4.5",
     "spawn-commands": "^0.3.1"
   },
-  "keywords": [],
+  "keywords": [
+    "app",
+    "base"
+  ],
   "verb": {
     "run": true,
     "toc": false,
