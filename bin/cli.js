@@ -11,7 +11,7 @@ var config = {
   }
 };
 
-runner(config, function(tasks, base, argv) {
+runner(config, 'appfile.js', function(tasks, base, argv) {
   base.option('lookup', function(key) {
     return [key, 'generate-' + key, 'verb-' + key + '-generator'];
   });

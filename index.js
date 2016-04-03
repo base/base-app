@@ -1,19 +1,35 @@
 'use strict';
 
-var assemble = require('assemble-core');
+var Assemble = require('assemble-core');
 var utils = require('./utils');
 
-var App = module.exports = function App(options) {
-  assemble.call(this, options);
+function App(options) {
+  Assemble.call(this, options);
   this.is('app');
-  assemble.debug(this);
+  this.initApp();
+}
+
+/**
+ * Inherit `assemble-core`
+ */
+
+Assemble.extend(App);
+
+/**
+ * Initialize defaults
+ */
+
+App.prototype.initApp = function() {
+  Assemble.debug(this);
+  App.emit('preInit', this);
   this.use(utils.generators());
   this.use(utils.pipeline());
   this.use(utils.pkg());
+  App.emit('init', this);
 };
 
 /**
- * Inherit `assemble`
+ * Expose `App`
  */
 
-assemble.extend(App);
+module.exports = App;
