@@ -2,13 +2,12 @@
 
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
-var unused = require('gulp-unused');
 var istanbul = require('gulp-istanbul');
-var unused = require('gulp-unused');
 var eslint = require('gulp-eslint');
+var unused = require('gulp-unused');
 
 gulp.task('coverage', function() {
-  return gulp.src(['index.js', 'lib/**/*.js'])
+  return gulp.src(['index.js', 'utils.js', 'bin/*.js'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire());
 });
@@ -20,15 +19,15 @@ gulp.task('test', ['coverage'], function() {
 });
 
 gulp.task('lint', function() {
-  return gulp.src(['*.js', 'test/*.js', 'lib/**/*.js'])
+  return gulp.src(['*.js', 'test/*.js', 'bin/*.js'])
     .pipe(eslint())
     .pipe(eslint.format());
 });
 
 gulp.task('unused', function() {
-  var keys = Object.keys(require('./lib/utils.js'));
-  return gulp.src(['index.js', 'lib/settings/*.js'])
-    .pipe(unused({keys: keys}))
+  var keys = Object.keys(require('./utils.js'));
+  return gulp.src(['*.js', 'bin/*.js'])
+    .pipe(unused({keys: keys}));
 });
 
 gulp.task('default', ['test', 'lint']);
