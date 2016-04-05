@@ -1,10 +1,10 @@
 'use strict';
 
-var Assemble = require('assemble-core');
+var Base = require('base');
 var utils = require('./utils');
 
 function App(options) {
-  Assemble.call(this, options);
+  Base.call(this, options);
   this.is('app');
   this.initApp();
 }
@@ -13,18 +13,15 @@ function App(options) {
  * Inherit `assemble-core`
  */
 
-Assemble.extend(App);
+Base.extend(App);
 
 /**
  * Initialize defaults
  */
 
 App.prototype.initApp = function() {
-  Assemble.debug(this);
   App.emit('preInit', this);
   this.use(utils.generators());
-  this.use(utils.pipeline());
-  this.use(utils.pkg());
   App.emit('init', this);
 };
 

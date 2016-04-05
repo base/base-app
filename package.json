@@ -25,15 +25,18 @@
     "test": "mocha"
   },
   "dependencies": {
-    "assemble-core": "^0.16.0",
+    "base-cli": "^0.4.26",
     "base-option": "^0.7.0",
     "base-pipeline": "^0.2.5",
     "base-pkg": "^0.2.0",
     "base-runtimes": "^0.1.5",
+    "debug": "^2.2.0",
     "lazy-cache": "^1.0.3",
     "liftoff": "^2.2.1",
     "log-utils": "^0.1.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "os-homedir": "^1.0.1",
+    "time-diff": "^0.1.0"
   },
   "devDependencies": {
     "base": "^0.8.1",
@@ -64,6 +67,13 @@
     "plugins": [
       "gulp-format-md"
     ],
+    "related": {
+      "list": [
+        "base",
+        "base-pipeline",
+        "base-config"
+      ]
+    },
     "reflinks": [
       "verb"
     ],
