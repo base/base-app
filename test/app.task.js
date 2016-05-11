@@ -7,7 +7,7 @@ var app;
 
 describe('.task', function() {
   beforeEach(function() {
-    app = new App();
+    app = new App({silent: true});
   });
 
   it('should register a task', function() {
