@@ -1,6 +1,6 @@
 {
   "name": "base-app",
-  "description": "The most interesting project in the world > Verb",
+  "description": "Starting point for creating a base application, with a few light plugins for running tasks and writing to the file system, and a functional CLI.",
   "version": "0.2.0",
   "homepage": "https://github.com/node-base/base-app",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",

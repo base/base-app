@@ -1,6 +1,6 @@
 # base-app [![NPM version](https://img.shields.io/npm/v/base-app.svg?style=flat)](https://www.npmjs.com/package/base-app) [![NPM downloads](https://img.shields.io/npm/dm/base-app.svg?style=flat)](https://npmjs.org/package/base-app) [![Build Status](https://img.shields.io/travis/node-base/base-app.svg?style=flat)](https://travis-ci.org/node-base/base-app)
 
-The most interesting project in the world > Verb
+Starting point for creating a base application, with a few light plugins for running tasks and writing to the file system, and a functional CLI.
 
 ## TOC
 
