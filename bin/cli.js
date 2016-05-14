@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var Core = require('..');
 var path = require('path');
 var exists = require('fs-exists-sync');
 var log = require('log-utils');
@@ -86,7 +87,7 @@ function resolveBase() {
   }
 
   if (argv.app) {
-    return resolveApp({name: argv.app, path: path.resolve(cwd, 'node_modules', argv.app)});
+    base = resolveApp({name: argv.app, path: path.resolve(cwd, 'node_modules', argv.app)});
   }
   return base;
 }
@@ -97,12 +98,11 @@ function resolveBase() {
  */
 
 function resolveApp(file) {
-  var Core = require('..');
-
   if (exists(file.path)) {
     console.log(log.timestamp, 'module', color.bold(color.yellow(file.name)));
     var Base = require(file.path);
     var base = new Base(argv);
+    base.isApp = true;
     base.log = log;
 
     if (typeof base.name === 'undefined') {
@@ -111,7 +111,7 @@ function resolveApp(file) {
 
     // if this is not an instance of base-app, load
     // app-base plugins onto the instance
-    if (file.name !== 'app-base') {
+    if (file.name !== 'core') {
       Core.plugins(base);
     }
     return base;

@@ -8,11 +8,9 @@ require = plugins;
  * Lazily required module dependencies
  */
 
-require('base-cwd', 'cwd');
 require('base-fs', 'vfs');
-require('base-option', 'option');
+require('base-generators', 'generators');
 require('base-runtimes', 'runtimes');
-require('base-task', 'task');
 require = fn;
 
 /**
