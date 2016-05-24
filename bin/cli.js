@@ -4,7 +4,6 @@ var Core = require('..');
 var path = require('path');
 var exists = require('fs-exists-sync');
 var log = require('log-utils');
-var color = log.colors;
 var argv = require('minimist')(process.argv.slice(2), {
   alias: {configfile: 'f'}
 });
@@ -30,7 +29,7 @@ if (!exists(configfile)) {
  * Log configfile
  */
 
-console.log(log.timestamp, 'config', color.green('~' + configfile));
+console.log(log.timestamp, 'using', log.green('~' + configfile));
 
 /**
  * Get the Base ctor and instance to use
@@ -45,15 +44,39 @@ if (base && typeof app === 'function') {
   base = app;
 }
 
+/**
+ * Handle errors
+ */
+
 if (!base) {
   handleError(base, new Error('cannot run config file: ' + configfile));
 }
+if (Object.keys(base).length === 0) {
+  handleError(base, new Error('expected a function or instance of Base to be exported'));
+}
+
+/**
+ * Setup listeners
+ */
+
+base.on('build', function(event, build) {
+  var prefix = event === 'finished' ? log.success + ' ' : '';
+  console.log(log.timestamp, event, build.key, prefix + log.red(build.time));
+});
+
+base.on('task', function(event, task) {
+  console.log(log.timestamp, event, task.key, log.red(task.time));
+});
+
+base.on('error', function(err) {
+  console.log(err.stack);
+});
 
 /**
  * Run tasks
  */
 
-base.build(argv._.length ? argv._ : ['default'], function(err) {
+build(base, argv, function(err) {
   if (err) handleError(base, err);
   base.emit('done');
 });
@@ -99,7 +122,6 @@ function resolveBase() {
 
 function resolveApp(file) {
   if (exists(file.path)) {
-    console.log(log.timestamp, 'module', color.bold(color.yellow(file.name)));
     var Base = require(file.path);
     var base = new Base(argv);
     base.isApp = true;
@@ -108,13 +130,25 @@ function resolveApp(file) {
     if (typeof base.name === 'undefined') {
       base.name = file.name;
     }
-
     // if this is not an instance of base-app, load
     // app-base plugins onto the instance
     if (file.name !== 'core') {
       Core.plugins(base);
     }
     return base;
+  }
+}
+
+function build(base, argv, cb) {
+  if (!argv._.length) {
+    if (base.hasTask('default')) {
+      base.build('default', cb);
+    } else {
+      console.error('no default task defined, stopping.');
+      process.exit(1);
+    }
+  }  else {
+    base.generate(argv, cb);
   }
 }
 
