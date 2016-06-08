@@ -27,7 +27,7 @@
   "dependencies": {
     "base": "^0.10.0",
     "base-fs": "^0.3.5",
-    "base-generators": "^0.3.1",
+    "base-generators": "^0.4.0",
     "base-runtimes": "^0.1.11",
     "extend-shallow": "^2.0.1",
     "find-pkg": "^0.1.2",
@@ -36,6 +36,7 @@
     "lazy-cache": "^2.0.1",
     "log-utils": "^0.1.4",
     "matched": "^0.4.1",
+    "resolve-file": "^0.2.0",
     "yargs-parser": "^2.4.0"
   },
   "devDependencies": {
