@@ -1,7 +1,7 @@
 {
   "name": "base-app",
   "description": "Starting point for creating a base application, with a few light plugins for running tasks and writing to the file system, and a functional CLI.",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "homepage": "https://github.com/node-base/base-app",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "node-base/base-app",
@@ -12,7 +12,7 @@
   "files": [
     "bin",
     "index.js",
-    "utils.js"
+    "lib"
   ],
   "main": "index.js",
   "bin": {
@@ -73,13 +73,13 @@
       "assemble",
       "base",
       "base-generators",
+      "base-task",
+      "composer",
       "gulp",
       "handlebars",
       "lodash",
       "swig",
-      "verb",
-      "base-task",
-      "composer"
+      "verb"
     ],
     "lint": {
       "reflinks": true
