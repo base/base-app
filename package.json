@@ -1,6 +1,6 @@
 {
   "name": "base-app",
-  "description": "Starting point for creating a base application, with a few light plugins for running tasks and writing to the file system, and a functional CLI.",
+  "description": "Starting point for creating a base application, with a couple of light plugins for running tasks and writing to the file system, and a functional CLI.",
   "version": "0.2.6",
   "homepage": "https://github.com/node-base/base-app",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -19,40 +19,32 @@
     "base": "bin/cli.js"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">8.0"
   },
   "scripts": {
     "test": "mocha"
   },
   "dependencies": {
-    "base": "^0.11.1",
+    "base": "^2.0.1",
     "base-fs": "^0.3.5",
-    "base-generators": "^0.4.1",
-    "base-runtimes": "^0.1.11",
-    "extend-shallow": "^2.0.1",
-    "find-pkg": "^0.1.2",
-    "fs-exists-sync": "^0.1.0",
-    "global-modules": "^0.2.2",
-    "lazy-cache": "^2.0.1",
-    "log-utils": "^0.1.4",
-    "matched": "^0.4.1",
-    "resolve-file": "^0.2.0",
-    "yargs-parser": "^2.4.0"
+    "base-generators": "^0.4.6",
+    "find-pkg": "^2.0.0",
+    "global-modules": "^1.0.0",
+    "log-utils": "^0.2.1",
+    "matched": "^2.0.1",
+    "minimist": "^1.2.0",
+    "resolve-file": "^0.3.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^2.0.0",
-    "gulp-format-md": "^0.1.9",
-    "gulp-istanbul": "^1.0.0",
-    "gulp-mocha": "^2.2.0",
-    "gulp-unused": "^0.1.2",
-    "mocha": "^2.5.3"
+    "gulp-format-md": "^1.0.0",
+    "mocha": "^3.5.3"
   },
   "keywords": [
     "api",
     "app",
     "application",
     "base",
+    "base-plugin",
     "baseplugin",
     "building-blocks",
     "create",
@@ -76,25 +68,17 @@
     "related": {
       "list": [
         "base",
-        "base-config",
+        "base-fs",
         "base-pipeline"
       ]
     },
-    "reflinks": [
-      "assemble",
-      "base",
-      "base-generators",
-      "base-task",
-      "composer",
-      "gulp",
-      "handlebars",
-      "lodash",
-      "swig",
-      "verb",
-      "verb-readme-generator"
-    ],
     "lint": {
       "reflinks": true
-    }
+    },
+    "reflinks": [
+      "base",
+      "base-task",
+      "composer"
+    ]
   }
 }
