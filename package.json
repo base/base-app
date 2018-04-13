@@ -1,7 +1,7 @@
 {
   "name": "base-app",
   "description": "Starting point for creating a base application, with a couple of light plugins for running tasks and writing to the file system, and a functional CLI.",
-  "version": "0.2.6",
+  "version": "1.0.0",
   "homepage": "https://github.com/node-base/base-app",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "node-base/base-app",
